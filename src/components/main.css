@@ -1,0 +1,11 @@
+body {
+    height: 100vh;
+    width: 100vh;
+    background-color: azure !important;
+    /* color: white !important; */
+}
+
+#app {
+    height: 100vh;
+    width: 100vw;
+}
