@@ -10,6 +10,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  base: '/sweng861-social-media-login/', // <- use your repo name here
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
