@@ -230,10 +230,10 @@ export default {
             }, 2000)
         },
         googleLogin() {
-            window.location.href = 'http://localhost:4000/auth/google';
+            window.location.href = 'https://sweng861-social-media-login.onrender.com/auth/google';
         },
         linkedinLogin() {
-            window.location.href = 'http://localhost:4000/auth/linkedin';
+            window.location.href = 'https://sweng861-social-media-login.onrender.com/auth/linkedin';
         }
     },
     mounted() {
