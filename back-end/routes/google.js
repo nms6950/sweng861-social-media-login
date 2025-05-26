@@ -24,7 +24,7 @@ router.get('/googleCallback', async (req, res) => {
 
   // Validate code
   if (!code) {
-    res.redirect('http://localhost:5173/sweng861-social-media-login/');
+    res.redirect('https://nms6950.github.io/sweng861-social-media-login/');
   }
 
   const tokenResponse = await axios.post('https://oauth2.googleapis.com/token', {
@@ -59,7 +59,7 @@ router.get('/googleCallback', async (req, res) => {
   });
 
   // Redirect back to "home screen"
-  res.redirect('http://localhost:5173/sweng861-social-media-login/home');
+  res.redirect('https://nms6950.github.io/sweng861-social-media-login/home');
 });
 
 async function checkUser(userInfo) {

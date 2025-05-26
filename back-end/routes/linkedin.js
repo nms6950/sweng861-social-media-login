@@ -23,7 +23,7 @@ router.get('/linkedinCallback', async (req, res) => {
 
     // Validate code
     if (!code) {
-        res.redirect('http://localhost:5173/sweng861-social-media-login/');
+        res.redirect('https://nms6950.github.io/sweng861-social-media-login/');
     }
 
     // Exchange code for access token
@@ -65,7 +65,7 @@ router.get('/linkedinCallback', async (req, res) => {
   });
 
   // Redirect back to "home screen"
-  res.redirect('http://localhost:5173/sweng861-social-media-login/home');
+  res.redirect('https://nms6950.github.io/sweng861-social-media-login/home');
 });
 
 async function checkUser(userInfo) {
