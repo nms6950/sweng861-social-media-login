@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-const creds = require('./../secrets/dbCreds');
+const creds = require('../secrets/dbCreds');
 
 const pool = new Pool({
     host: creds.host,

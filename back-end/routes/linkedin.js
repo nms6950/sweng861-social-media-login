@@ -4,7 +4,7 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-const pool = require('./../config/db.js');
+const pool = require('../config/db.js');
 
 
 router.get('/auth/linkedin', (req, res) => {

@@ -4,7 +4,7 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-const pool = require('./../config/db.js');
+const pool = require('../config/db.js');
 
 router.get('/auth/google', (req, res) => {
   const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
