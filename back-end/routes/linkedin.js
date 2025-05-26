@@ -26,6 +26,8 @@ router.get('/linkedinCallback', async (req, res) => {
         res.redirect('https://nms6950.github.io/sweng861-social-media-login/');
     }
 
+    console.log(process.env.LINKEDIN_REDIRECT_URI)
+
     // Exchange code for access token
     const tokenResponse = await axios.post('https://www.linkedin.com/oauth/v2/accessToken', null, {
         params: {
