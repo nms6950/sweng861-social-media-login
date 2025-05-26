@@ -1,5 +1,4 @@
 const { Pool } = require('pg');
-const creds = require('./db_creds');
 
 const pool = new Pool({
   host: "aws-0-us-east-2.pooler.supabase.com",
