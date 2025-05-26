@@ -27,6 +27,9 @@ router.get('/googleCallback', async (req, res) => {
     res.redirect('https://nms6950.github.io/sweng861-social-media-login/');
   }
 
+  console.log(process.env.GOOGLE_CLIENT_ID)
+  console.log(process.env.GOOGLE_CLIENT_SECRET)
+
   const tokenResponse = await axios.post('https://oauth2.googleapis.com/token', {
     code,
     client_id: process.env.GOOGLE_CLIENT_ID,
