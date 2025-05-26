@@ -1,16 +1,20 @@
 const { Pool } = require('pg');
-const creds = require('../secrets/dbCreds');
+const creds = require('./db_creds');
+const dns = require('dns');
 
+// Force DNS to prefer IPv4
 const pool = new Pool({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    ssl: { rejectUnauthorized: false },
-    lookup: (hostname, options, callback) => {
-        return lookup(hostname, { family: 4 }, callback); // Force IPv4
-      },
+  host: creds.host,
+  port: creds.port,
+  database: creds.database,
+  user: creds.user,
+  password: creds.password,
+  ssl: {
+    rejectUnauthorized: false, // Required by Supabase
+  },
+  lookup: (hostname, options, callback) => {
+    dns.lookup(hostname, { family: 4 }, callback);
+  },
 });
 
 module.exports = pool;
