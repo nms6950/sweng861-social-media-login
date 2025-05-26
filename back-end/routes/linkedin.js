@@ -65,7 +65,7 @@ router.get('/linkedinCallback', async (req, res) => {
   });
 
   // Redirect back to "home screen"
-  res.redirect('https://nms6950.github.io/sweng861-social-media-login/#/home');
+  res.redirect('https://nms6950.github.io/sweng861-social-media-login/home');
 });
 
 async function checkUser(userInfo) {
