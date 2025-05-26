@@ -3,7 +3,7 @@ import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory('/sweng861-social-media-login/'),
   routes: [
     {
       path: '/',
