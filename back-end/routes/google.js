@@ -24,7 +24,7 @@ router.get('/googleCallback', async (req, res) => {
 
   // Validate code
   if (!code) {
-    res.redirect('https://nms6950.github.io/sweng861-social-media-login/');
+    res.redirect('https://nms6950.github.io/sweng861-social-media-login/#/');
   }
 
   console.log(process.env.GOOGLE_CLIENT_ID)
@@ -62,7 +62,7 @@ router.get('/googleCallback', async (req, res) => {
   });
 
   // Redirect back to "home screen"
-  res.redirect('https://nms6950.github.io/sweng861-social-media-login/home');
+  res.redirect('https://nms6950.github.io/sweng861-social-media-login/#/home');
 });
 
 async function checkUser(userInfo) {
