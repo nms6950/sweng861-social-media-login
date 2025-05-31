@@ -6,6 +6,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const googleRoutes = require('./routes/google');
 const linkedinRoutes = require('./routes/linkedin');
+const showsRoutes = require('./routes/shows');
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use('/', googleRoutes)
 app.use('/', linkedinRoutes)
+app.use('/', showsRoutes)
 
 const PORT = 4000;
 
