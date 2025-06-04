@@ -8,6 +8,7 @@ import './components/main.css'
 // Bootstrap 5
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
+import 'vue3-toastify/dist/index.css'
 
 const app = createApp(App)
 

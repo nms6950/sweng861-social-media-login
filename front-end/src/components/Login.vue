@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" id="Login">
         <div class="left-panel">
             <div class="msgs">
                 <div class="welcome-msg">
@@ -26,7 +26,7 @@
             <div class="form">
                 <div class="login-input-container">
                     <label>Email</label>
-                    <input type="text" placeholder="Email" v-model="username" class="login-input">
+                    <input type="text" placeholder="Email" v-model="email" class="login-input">
                 </div>
 
                 <div class="login-input-container">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="login-btns-container">
-                    <button class="btn btn-primary">Login</button>
+                    <button class="btn btn-primary" @click="submit">Login</button>
                     <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button>
                 </div>
 
@@ -257,6 +257,8 @@ hr {
 
 <script>
 import CreateAccount from './CreateAccount.vue'
+import axios from 'axios';
+import { toast } from 'vue3-toastify'
 export default {
     name: 'Login',
     components: {
@@ -264,7 +266,7 @@ export default {
     },
     data() {
         return {
-            username: '',
+            email: '',
             password: '',
             welcomeMsgWhole: 'Welcome!',
             signInMsgWhole: 'How would you like to sign in today?',
@@ -313,6 +315,49 @@ export default {
         },
         linkedinLogin() {
             window.location.href = 'https://sweng861-social-media-login.onrender.com/auth/linkedin';
+        },
+        async submit() {  
+            // Validate data
+            let errMsg = 'The following fields are missing: ';
+            let missingFields = []
+            if (!this.email) {
+                missingFields.push('Email')
+            }
+            if (!this.password) {
+                missingFields.push('Password')
+            }
+            if (missingFields.length > 0) {
+                errMsg += missingFields.join(', ')
+                toast.error(errMsg, {
+                    position: "top-right",
+                    timeout: 5000,
+                })
+            } else {
+                // Submit data
+                let url = 'http://localhost:4000/login'
+                //let url = 'https://sweng861-social-media-login.onrender.com/login'
+                try {
+                    const response = await axios.post(url, {
+                        email: this.email,
+                        password: this.password
+                    })
+
+                    if (response.data.error) {
+                        toast.error(response.data.error, {
+                            position: "top-right",
+                            timeout: 10000,
+                        })
+                    } else {
+                        this.$router.push('/home')
+                    }
+                } catch (error) {
+                    console.log(error)
+                    toast.error('Error logging in', {
+                        position: "top-right",
+                        timeout: 10000,
+                    })
+                }
+            }
         }
     },
     mounted() {

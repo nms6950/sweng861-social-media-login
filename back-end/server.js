@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const googleRoutes = require('./routes/google');
 const linkedinRoutes = require('./routes/linkedin');
 const showsRoutes = require('./routes/shows');
+const usersRoutes = require('./routes/users')
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use('/', googleRoutes)
 app.use('/', linkedinRoutes)
 app.use('/', showsRoutes)
+app.use('/', usersRoutes)
 
 const PORT = 4000;
 

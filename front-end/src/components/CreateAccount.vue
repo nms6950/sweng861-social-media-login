@@ -28,7 +28,7 @@
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" @click="submit" data-bs-dismiss="modal">Submit</button>
       </div>
 
     </div>
@@ -37,6 +37,9 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { toast } from 'vue3-toastify'
+import * as bootstrap from 'bootstrap'
 export default {
     name: 'CreateAccount',
     data() {
@@ -46,6 +49,89 @@ export default {
             password: ''
         }
     },
+    methods: {
+       async submit() {  
+            // Validate data
+            let errMsg = 'The following fields are missing: ';
+            let missingFields = []
+            if (!this.name) {
+                missingFields.push('Name')
+            } 
+            if (!this.email) {
+                missingFields.push('Email')
+            }
+            if (!this.password) {
+                missingFields.push('Password')
+            }
+            if (missingFields.length > 0) {
+                errMsg += missingFields.join(', ')
+                toast.error(errMsg, {
+                    position: "top-right",
+                    timeout: 5000,
+                })
+                // this.$bvToast.toast(errMsg, {
+                //     title: 'Error',
+                //     variant: 'danger',
+                //     toaster: 'b-toaster-top-center',
+                //     solid: true,
+                //     autoHideDelay: 10000
+                // })
+            } else {
+                // Submit data
+                let url = 'http://localhost:4000/createAccount'
+                //let url = 'https://sweng861-social-media-login.onrender.com/createAccount'
+                try {
+                    const response = await axios.post(url, {
+                        name: this.name,
+                        email: this.email,
+                        password: this.password
+                    })
+
+                    if (response.data.error) {
+                        // this.$bvToast.toast('Error creating account', {
+                        //     title: 'Error',
+                        //     variant: 'danger',
+                        //     toaster: 'b-toaster-top-center',
+                        //     solid: true,
+                        //     autoHideDelay: 10000
+                        // })
+                        toast.error(response.data.error, {
+                            position: "top-right",
+                            timeout: 10000,
+                        })
+                    }
+
+                    if (response.status === 201) {
+                        // this.$bvToast.toast('Account created successfully', {
+                        //     title: 'Success',
+                        //     variant: 'success',
+                        //     toaster: 'b-toaster-top-center',
+                        //     solid: true,
+                        //     autoHideDelay: 5000
+                        // })
+                        toast.success('Account created successfully', {
+                            position: "top-right",
+                            timeout: 5000,
+                        })
+                        this.name = ''
+                        this.email = ''
+                        this.password = ''
+                        const modalEl = document.getElementById('createAccountModal')
+                        const modalInstance = bootstrap.Modal.getInstance(modalEl)
+                                            || new bootstrap.Modal(modalEl)
+                        modalInstance.hide()
+
+                        document.getElementById('Login')?.focus()
+                    } 
+                } catch (error) {
+                    toast.error('Error creating account', {
+                        position: "top-right",
+                        timeout: 10000,
+                    })
+                }
+            }
+        }
+    }
 }
 </script>
 
