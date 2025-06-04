@@ -24,19 +24,40 @@
                 </div>
             </div>
             <div class="form">
-                <div class="platform" @click="googleLogin">
-                    <img src="./../assets/Google_Favicon_2025.png">
-                    <label>Google</label>
-                </div> 
-                <div class="platform" @click="linkedinLogin">
-                    <img src="./../assets/linkedin_logo.png">
-                    <label>LinkedIn</label>
+                <div class="login-input-container">
+                    <label>Email</label>
+                    <input type="text" placeholder="Email" v-model="username" class="login-input">
+                </div>
+
+                <div class="login-input-container">
+                    <label>Password</label>
+                    <input type="password" placeholder="Password" v-model="password" class="login-input">
+                </div>
+
+                <div class="login-btns-container">
+                    <button class="btn btn-primary">Login</button>
+                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button>
+                </div>
+
+                <hr />
+                <!-- <input type="text" placeholder="Username" v-model="username" class="login-input">
+                <input type="password" placeholder="Password" v-model="password" class="login-input"> -->
+                <div class="platforms">
+                    <div class="platform" @click="googleLogin">
+                        <img src="./../assets/Google_Favicon_2025.png">
+                        <label>Google</label>
+                    </div> 
+                    <div class="platform" @click="linkedinLogin">
+                        <img src="./../assets/linkedin_logo.png">
+                        <label>LinkedIn</label>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="metaData">
             <span>Nathan Schweikhart // SWENG 861 // Summer 2025</span>
         </div>
+        <CreateAccount></CreateAccount>
     </div>
 </template>
 
@@ -69,6 +90,51 @@
     width: 36vw;
     height: 40px;
     visibility: hidden;
+}
+.login-input {
+    height: 50px;
+    width: 100%;
+    background-color: lightgray;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding-left: 2%;
+}
+
+.login-input-container label {
+    margin-left: 2%;
+}
+
+.login-input-container {
+    height: 70px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-weight: 700;
+}
+
+hr {
+    color: black !important;
+    border-width: 3px !important;
+    width: 65%;
+    border-color: black !important;
+    /* border-top: 5px black solid !important; */
+    opacity: 1 !important;
+}
+
+.login-btns-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    gap: 10%;
+    font-weight: 700;
+}
+
+.login-btns-container button {  
+    min-width: 20%;
 }
 
 .left-panel {
@@ -141,7 +207,7 @@
 
 .form {
     height: 50%;
-    width: 90%;
+    width: 100%;
     /* background-color: lightgray; */
     border: 5px solid gray;
     border-radius: 10px;
@@ -152,9 +218,18 @@
     gap: 5%;
 }
 
+.platforms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
 .platform {
-    width: 50%;
-    height: 100px;
+    width: 30%;
+    height: 75px;
     border-radius: 50px;
     background-color: white;
     display: flex;
@@ -181,8 +256,12 @@
 </style>
 
 <script>
+import CreateAccount from './CreateAccount.vue'
 export default {
     name: 'Login',
+    components: {
+        CreateAccount
+    },
     data() {
         return {
             username: '',
