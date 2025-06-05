@@ -69,13 +69,6 @@ export default {
                     position: "top-right",
                     timeout: 5000,
                 })
-                // this.$bvToast.toast(errMsg, {
-                //     title: 'Error',
-                //     variant: 'danger',
-                //     toaster: 'b-toaster-top-center',
-                //     solid: true,
-                //     autoHideDelay: 10000
-                // })
             } else {
                 // Submit data
                 let url = 'http://localhost:4000/createAccount'
@@ -88,13 +81,6 @@ export default {
                     })
 
                     if (response.data.error) {
-                        // this.$bvToast.toast('Error creating account', {
-                        //     title: 'Error',
-                        //     variant: 'danger',
-                        //     toaster: 'b-toaster-top-center',
-                        //     solid: true,
-                        //     autoHideDelay: 10000
-                        // })
                         toast.error(response.data.error, {
                             position: "top-right",
                             timeout: 10000,
@@ -102,13 +88,6 @@ export default {
                     }
 
                     if (response.status === 201) {
-                        // this.$bvToast.toast('Account created successfully', {
-                        //     title: 'Success',
-                        //     variant: 'success',
-                        //     toaster: 'b-toaster-top-center',
-                        //     solid: true,
-                        //     autoHideDelay: 5000
-                        // })
                         toast.success('Account created successfully', {
                             position: "top-right",
                             timeout: 5000,

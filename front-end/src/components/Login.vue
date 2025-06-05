@@ -150,6 +150,7 @@ hr {
     align-items: center;
     padding-top: 5%;
     border-right: 5px whitesmoke solid;
+    gap: 5%;
 }
 
 .msgs {
@@ -242,7 +243,7 @@ hr {
 
 .platform img {
     /* height: 75px; */
-    width: 50px;
+    width: 30px;
 }
 
 .platform:hover {
