@@ -20,7 +20,8 @@ import {
     faBars, 
     faRightFromBracket, 
     faPenToSquare,
-    faTrash
+    faTrash,
+    faPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { faVuejs } from '@fortawesome/free-brands-svg-icons';
 
@@ -31,7 +32,8 @@ library.add(
     faVuejs, 
     faRightFromBracket,
     faPenToSquare,
-    faTrash
+    faTrash,
+    faPlus
 );
 
 const app = createApp(App)

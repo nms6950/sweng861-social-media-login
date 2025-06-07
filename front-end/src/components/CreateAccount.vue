@@ -71,8 +71,9 @@ export default {
                 })
             } else {
                 // Submit data
-                let url = 'http://localhost:4000/createAccount'
-                //let url = 'https://sweng861-social-media-login.onrender.com/createAccount'
+                // Testing - localhost url
+                // let url = 'http://localhost:4000/createAccount'
+                let url = 'https://sweng861-social-media-login.onrender.com/createAccount'
                 try {
                     const response = await axios.post(url, {
                         name: this.name,

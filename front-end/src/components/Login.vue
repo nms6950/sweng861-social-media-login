@@ -335,8 +335,9 @@ export default {
                 })
             } else {
                 // Submit data
-                let url = 'http://localhost:4000/login'
-                //let url = 'https://sweng861-social-media-login.onrender.com/login'
+                // Testing - localhost url
+                // let url = 'http://localhost:4000/login'
+                let url = 'https://sweng861-social-media-login.onrender.com/login'
                 try {
                     const response = await axios.post(url, {
                         email: this.email,
