@@ -27,8 +27,6 @@ router.post('/createAccount', async (req, res) => {
             return res.json({ error: 'User with this email already exists' });
         }
 
-        console.log('hi...?')
-
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -66,6 +64,7 @@ router.post('/login', async (req, res) => {
 
         // Update login date
         const updateQuery = 'UPDATE public.users SET updated_at = NOW() WHERE email = $1 and provider = $2 RETURNING *';
+        await pool.query(updateQuery, [email, 'manual']);
 
         const userResponse = await pool.query(checkExistingUserQuery, [email, 'manual']);
 
@@ -83,11 +82,7 @@ router.post('/login', async (req, res) => {
             maxAge: 60 * 60 * 1000 // 1 hour
         });
 
-        // Redirect back to "home screen"
-        //res.redirect('https://nms6950.github.io/sweng861-social-media-login/#/home');
-        //router.push('/home')
         return res.json(userResponse.rows[0]);
-        // res.status(200).json({ token });
     } catch (error) {
         console.error('Error logging in:', error);
         res.status(500).json({ error: 'Internal server error' });
