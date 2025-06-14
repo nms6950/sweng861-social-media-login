@@ -22,13 +22,13 @@ router.get('/googleCallback', async (req, res) => {
   // Exchange code for tokens
   const code = req.query.code;
 
+  console.log(code)
+
   // Validate code
   if (!code) {
     res.redirect('https://nms6950.github.io/sweng861-social-media-login/#/');
+    return;
   }
-
-  console.log(process.env.GOOGLE_CLIENT_ID)
-  console.log(process.env.GOOGLE_CLIENT_SECRET)
 
   const tokenResponse = await axios.post('https://oauth2.googleapis.com/token', {
     code,

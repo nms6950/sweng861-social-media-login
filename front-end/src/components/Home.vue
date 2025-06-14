@@ -16,19 +16,18 @@
                 </div>
             </div>
             <div class="shows-container">
-                <!-- TODO: Change this to a v-for -->
                 <Card 
                   v-for="show in filteredShows" 
-                  :show="show" 
+                  :show="show"    
                   :key="show.show_id"
-                  @updateShow="initUpdateModal"
-                  @deleteShow="initDeleteModal"
+                  @updateShow="initUpdateModal($event)"
+                  @deleteShow="initDeleteModal($event)"
                 />
             </div>
         </div>
-        <UpdateShow :show="updatedShow" @refresh="getAllShows"></UpdateShow>
-        <DeleteShow :show="deletedShow" @refresh="getAllShows"></DeleteShow>
-        <NewShow @refresh="getAllShows"></NewShow>
+        <UpdateShow :show="updatedShow" @refresh="getAllShows()"></UpdateShow>
+        <DeleteShow :show="deletedShow" @refresh="getAllShows()"></DeleteShow>
+        <NewShow @refresh="getAllShows()"></NewShow>
     </div>
 </template>
 
@@ -146,7 +145,6 @@ export default {
             let url = 'https://sweng861-social-media-login.onrender.com/getAllShows'
             try {
                 let response = await axios.get(url);
-                console.log(response.data)
                 this.shows = response.data;
             } catch (error) {
                 console.log(error)

@@ -13,6 +13,7 @@ router.get('/auth/linkedin', (req, res) => {
   const scope = 'openid profile email';
   const authUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${LINKEDIN_CLIENT_ID}&redirect_uri=${encodeURIComponent(LINKEDIN_REDIRECT_URI)}&scope=${encodeURIComponent(scope)}`;
   res.redirect(authUrl);
+  return;
 });
 
 router.get('/linkedinCallback', async (req, res) => {
@@ -24,9 +25,8 @@ router.get('/linkedinCallback', async (req, res) => {
     // Validate code
     if (!code) {
         res.redirect('https://nms6950.github.io/sweng861-social-media-login/#/');
+        return;
     }
-
-    console.log(process.env.LINKEDIN_REDIRECT_URI)
 
     // Exchange code for access token
     const tokenResponse = await axios.post('https://www.linkedin.com/oauth/v2/accessToken', null, {

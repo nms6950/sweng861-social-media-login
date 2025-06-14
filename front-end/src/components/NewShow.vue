@@ -99,7 +99,6 @@ export default {
                             position: "top-right",
                             timeout: 5000,
                         })
-                        this.$emit('refresh')
                         this.title = ''
                         this.critics_score = null
                         this.audience_score = null
@@ -110,6 +109,7 @@ export default {
                                             || new bootstrap.Modal(modalEl) 
                         modalInstance.hide()
 
+                        this.$emit('refresh')
                         document.getElementById('Home')?.focus()
                     }
                 } catch (error) {

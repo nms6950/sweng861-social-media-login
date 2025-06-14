@@ -61,7 +61,7 @@ export default {
                     document.getElementById('Home')?.focus()
                 }
             } catch (error) {
-                toast.error('Error creating account', {
+                toast.error('Error deleting account', {
                     position: "top-right",
                     timeout: 10000,
                 })

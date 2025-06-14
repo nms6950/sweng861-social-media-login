@@ -10,7 +10,7 @@
                     v-if="!signInVisible"
                     >_</div>
                 </div>
-                <div class="sign-in-msg" v-if="signInVisible">
+                <div class="sign-in-msg" v-if="signInVisible" id="sign-in-msg">
                     >> {{ visibleSignInMsg }}
                     <div 
                       class="terminal-box" 
@@ -43,11 +43,11 @@
                 <!-- <input type="text" placeholder="Username" v-model="username" class="login-input">
                 <input type="password" placeholder="Password" v-model="password" class="login-input"> -->
                 <div class="platforms">
-                    <div class="platform" @click="googleLogin">
+                    <div class="platform" @click="googleLogin" id="googleBtn">
                         <img src="./../assets/Google_Favicon_2025.png">
                         <label>Google</label>
                     </div> 
-                    <div class="platform" @click="linkedinLogin">
+                    <div class="platform" @click="linkedinLogin" id="linkedinBtn">
                         <img src="./../assets/linkedin_logo.png">
                         <label>LinkedIn</label>
                     </div>
@@ -353,23 +353,25 @@ export default {
                         this.$router.push('/home')
                     }
                 } catch (error) {
-                    console.log(error)
                     toast.error('Error logging in', {
                         position: "top-right",
                         timeout: 10000,
                     })
                 }
             }
+        },
+        init() {
+            this.generateIntervals();
+            setInterval(() => {
+                this.flicker = !this.flicker;
+            }, 500)
+            setInterval(() => {
+                this.generateIntervals();
+            }, 10000)
         }
     },
     mounted() {
-        this.generateIntervals();
-        setInterval(() => {
-            this.flicker = !this.flicker;
-        }, 500)
-        setInterval(() => {
-            this.generateIntervals();
-        }, 10000)
+        this.init();
     }
 }
 </script>

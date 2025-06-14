@@ -39,15 +39,17 @@ const updateShowSchema = Joi.object({
 // getShows
 router.get('/getShows', async (req, res) => {
     try {
-        const response = await axios.get('https://rottentomato.p.rapidapi.com/streaming-tv', {
-            headers: {
-              'x-rapidapi-host': 'rottentomato.p.rapidapi.com',
-              'x-rapidapi-key': process.env.RAPID_API_KEY
-            }
-        });
+        // const response = await axios.get('https://rottentomato.p.rapidapi.com/streaming-tv', {
+        //     headers: {
+        //       'x-rapidapi-host': 'rottentomato.p.rapidapi.com',
+        //       'x-rapidapi-key': process.env.RAPID_API_KEY
+        //     }
+        // });
+
+        const response = await axios.get('fakeurl')
 
         if (response.status !== 200) {
-            return res.status(response.status).json({ error: 'Failed to fetch shows from API' });
+            return res.json({ error: 'Failed to fetch shows from API' });
         }
         const shows = response.data.shows;
 
@@ -126,14 +128,13 @@ router.post('/createShow', async (req, res) => {
 router.put('/updateShow/:id', async (req, res) => {
     const { id } = req.params;
 
-    if (!id) {
+    if (!parseFloat(id)) {
         return res.json({ error: 'Show ID is required' });
     }
 
     const { error, value: updates } = await updateShowSchema.validate(req.body, { abortEarly: false });
 
     if (error) {
-        console.log(error)
         return res.json({ error: 'Validation failed', details: error.details });
     }
 
@@ -167,8 +168,8 @@ router.put('/updateShow/:id', async (req, res) => {
 router.get('/getShow/:id', async (req, res) => {
     const { id } = req.params;
 
-    if (!id) {
-        return res.status(400).json({ error: 'Show ID is required' });
+    if (!parseFloat(id)) {
+        return res.json({ error: 'Show ID is required' });
     }
 
     const selectQuery = 'SELECT * FROM public.tv_shows WHERE show_id = $1';
@@ -177,10 +178,10 @@ router.get('/getShow/:id', async (req, res) => {
         const result = await pool.query(selectQuery, [id]);
 
         if (result.rowCount === 0) {
-            return res.status(404).json({ error: 'Show not found' });
+            return res.json({ error: 'Show not found' });
         }
 
-        res.json({ show: result.rows[0] });
+        return res.json({ show: result.rows[0] });
     } catch (error) {
         console.log(error);
         res.status(500);
@@ -202,7 +203,7 @@ router.get('/getAllShows', async (req, res) => {
 router.delete('/deleteShow/:id', async (req, res) => {
     const { id } = req.params;
 
-    if (!id) {
+    if (!parseFloat(id)) {
         return res.json({ error: 'Show ID is required' });
     }
 

@@ -18,12 +18,7 @@ router.post('/createAccount', async (req, res) => {
         // Check if user with email and provider = manual exists
         const existingUser = await pool.query(existingUserQuery, [email, 'manual']);
 
-        console.log(existingUser)
-        console.log(existingUser.rows)
-        console.log(existingUser.rows.length)
-
         if (existingUser.rows.length > 0) {
-            console.log('Returning...')
             return res.json({ error: 'User with this email already exists' });
         }
 
@@ -47,8 +42,6 @@ router.post('/login', async (req, res) => {
     try {
         // Check if user with email and provider = manual exists
         const existingUser = await pool.query(checkExistingUserQuery, [email, 'manual']);
-
-        console.log(existingUser.rows)
         
         if (existingUser.rows.length === 0) {
             return res.json({ error: 'User not found' });
@@ -59,8 +52,6 @@ router.post('/login', async (req, res) => {
         if (!isPasswordValid) {
             return res.json({ error: 'Invalid password' });
         }
-
-        console.log('here')
 
         // Update login date
         const updateQuery = 'UPDATE public.users SET updated_at = NOW() WHERE email = $1 and provider = $2 RETURNING *';

@@ -22,6 +22,11 @@ app.use('/', usersRoutes)
 
 const PORT = 4000;
 
-app.listen(PORT, () => {
-    console.log(`Backend running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, () => {
+      console.log(`Backend running on http://localhost:${PORT}`);
+    });
+}
+
+// Export the app for testing
+module.exports = app;
