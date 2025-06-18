@@ -3,7 +3,7 @@
       class="card" 
       :style="show.image_url ? 'width: 40%' : 'width: 25%; margin-right: 15%;'"
       v-if="show"
-    >
+    > 
         <div class="card-body">
             <h5 class="card-title">{{ show.title }}</h5>
             <div class="card-row mt-3">
