@@ -20,6 +20,14 @@ app.use('/', linkedinRoutes)
 app.use('/', showsRoutes)
 app.use('/', usersRoutes)
 
+// Serve static frontend
+app.use(express.static(path.join(__dirname, './../front-end/dist')));
+
+// Fallback to index.html for SPA routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './../front-end/dist/index.html'));
+});
+
 const PORT = 4000;
 
 if (process.env.NODE_ENV !== 'test') {
