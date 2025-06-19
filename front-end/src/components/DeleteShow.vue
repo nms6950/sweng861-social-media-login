@@ -36,11 +36,8 @@ export default {
     methods: {
         async submit() {  
             // Submit data
-            // Testing - localhost url
-            // let url = `http://localhost:4000/deleteShow/${this.show.id}`
-            let url = `https://sweng861-social-media-login.onrender.com/deleteShow/${this.show.id}`
             try {
-                const response = await axios.delete(url)
+                const response = await axios.delete(`/deleteShow/${this.show.id}`)
 
                 if (response.data.error) {
                     toast.error(response.data.error, {

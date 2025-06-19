@@ -66,7 +66,7 @@ export default {
             // let url = `http://localhost:4000/updateShow/${this.show.id}`
             let url = `https://sweng861-social-media-login.onrender.com/updateShow/${this.show.id}`
             try {
-                const response = await axios.put(url, {
+                const response = await axios.put(`/updateShow/${this.show.id}`, {
                     title: this.title,
                     critics_score: this.critics_score,
                     audience_score: this.audience_score,

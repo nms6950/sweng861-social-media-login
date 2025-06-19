@@ -144,7 +144,7 @@ export default {
             // let url = 'http://localhost:4000/getAllShows'
             let url = 'https://sweng861-social-media-login.onrender.com/getAllShows'
             try {
-                let response = await axios.get(url);
+                let response = await axios.get('/getAllShows');
                 this.shows = response.data;
             } catch (error) {
                 console.log(error)

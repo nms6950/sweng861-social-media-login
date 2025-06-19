@@ -81,7 +81,7 @@ export default {
                 // let url = `http://localhost:4000/createShow`
                 let url = 'https://sweng861-social-media-login.onrender.com/createShow'
                 try {
-                    const response = await axios.post(url, {
+                    const response = await axios.post('/createShow', {
                         title: this.title,
                         critics_score: this.critics_score,
                         audience_score: this.audience_score,

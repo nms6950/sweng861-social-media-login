@@ -339,7 +339,7 @@ export default {
                 // let url = 'http://localhost:4000/login'
                 let url = 'https://sweng861-social-media-login.onrender.com/login'
                 try {
-                    const response = await axios.post(url, {
+                    const response = await axios.post('/login', {
                         email: this.email,
                         password: this.password
                     })
