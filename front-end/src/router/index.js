@@ -3,7 +3,7 @@ import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 
 const router = createRouter({
-  history: createWebHashHistory('/sweng861-social-media-login/'),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',

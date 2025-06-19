@@ -16,18 +16,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/', googleRoutes)
-app.use('/', linkedinRoutes)
-app.use('/', showsRoutes)
-app.use('/', usersRoutes)
-
-// Serve static frontend
+// Static frontend
 app.use(express.static(path.join(__dirname, './../front-end/dist')));
 
-// Fallback to index.html for SPA routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './../front-end/dist/index.html'));
-});
+// Backend routes
+app.use('/', googleRoutes);
+app.use('/', linkedinRoutes);
+app.use('/', showsRoutes);
+app.use('/', usersRoutes);
 
 const PORT = 4000;
 
