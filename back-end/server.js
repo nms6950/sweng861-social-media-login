@@ -16,8 +16,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Static frontend
-app.use(express.static(path.join(__dirname, './../front-end/dist')));
+// Serve static frontend from 'public' folder (where your workflow copies frontend build)
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Backend routes
 app.use('/', googleRoutes);

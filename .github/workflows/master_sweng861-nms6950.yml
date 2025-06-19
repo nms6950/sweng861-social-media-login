@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'  # Use 18.x or your actual version; 22.x may be too new for some packages
+          node-version: '22.x'  # Use 18.x or your actual version; 22.x may be too new for some packages
 
       - name: Build frontend
         run: |
