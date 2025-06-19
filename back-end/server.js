@@ -7,7 +7,8 @@ const dotenv = require('dotenv');
 const googleRoutes = require('./routes/google');
 const linkedinRoutes = require('./routes/linkedin');
 const showsRoutes = require('./routes/shows');
-const usersRoutes = require('./routes/users')
+const usersRoutes = require('./routes/users');
+const path = require('path');
 
 dotenv.config();
 
