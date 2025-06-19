@@ -25,7 +25,7 @@ app.use('/', linkedinRoutes);
 app.use('/', showsRoutes);
 app.use('/', usersRoutes);
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
