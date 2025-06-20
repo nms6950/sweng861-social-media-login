@@ -336,10 +336,11 @@ export default {
             } else {
                 // Submit data
                 // Testing - localhost url
-                // let url = 'http://localhost:4000/login'
-                let url = 'https://sweng861-social-media-login.onrender.com/login'
+                //let url = `http://localhost:4000/login`
+                const baseURL = import.meta.env.DEV ? 'http://localhost:4000' : '';
+                console.log(baseURL)
                 try {
-                    const response = await axios.post('/login', {
+                    const response = await axios.post(`${baseURL}/login`, {
                         email: this.email,
                         password: this.password
                     })
