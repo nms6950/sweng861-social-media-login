@@ -26,7 +26,7 @@ router.get('/googleCallback', async (req, res) => {
 
   // Validate code
   if (!code) {
-    res.redirect('https://nms6950.github.io/sweng861-social-media-login/#/');
+    res.redirect('https://sweng861-nms6950-ashtchgecph5gkdx.eastus2-01.azurewebsites.net/#/');
     return;
   }
 
@@ -62,7 +62,7 @@ router.get('/googleCallback', async (req, res) => {
   });
 
   // Redirect back to "home screen"
-  res.redirect('https://nms6950.github.io/sweng861-social-media-login/#/home');
+  res.redirect('https://sweng861-nms6950-ashtchgecph5gkdx.eastus2-01.azurewebsites.net/#/home');
 });
 
 async function checkUser(userInfo) {

@@ -312,10 +312,10 @@ export default {
             }, 2000)
         },
         googleLogin() {
-            window.location.href = 'https://sweng861-social-media-login.onrender.com/auth/google';
+            window.location.href = 'https://sweng861-nms6950-ashtchgecph5gkdx.eastus2-01.azurewebsites.net/auth/google';
         },
         linkedinLogin() {
-            window.location.href = 'https://sweng861-social-media-login.onrender.com/auth/linkedin';
+            window.location.href = 'https://sweng861-nms6950-ashtchgecph5gkdx.eastus2-01.azurewebsites.net/auth/linkedin';
         },
         async submit() {  
             // Validate data
